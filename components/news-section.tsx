@@ -12,7 +12,7 @@ const blogPosts = [
     excerpt:
       "Discover how eco-friendly practices are transforming the logistics industry and reducing carbon footprints.",
     date: "May 15, 2023",
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/cargo.png?height=200&width=400",
     slug: "sustainable-logistics",
   },
   {
@@ -20,7 +20,7 @@ const blogPosts = [
     title: "Navigating Global Supply Chain Disruptions",
     excerpt: "Learn strategies to mitigate risks and maintain operational continuity during supply chain challenges.",
     date: "April 22, 2023",
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/cargo.png?height=200&width=400",
     slug: "supply-chain-disruptions",
   },
   {
@@ -28,7 +28,7 @@ const blogPosts = [
     title: "Technology Trends Reshaping Freight Forwarding",
     excerpt: "Explore how AI, blockchain, and IoT are revolutionizing the freight forwarding and logistics landscape.",
     date: "March 10, 2023",
-    image: "/placeholder.svg?height=200&width=400",
+    image: "/cargo.png?height=200&width=400",
     slug: "technology-trends",
   },
 ]
@@ -52,7 +52,7 @@ export default function NewsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post) => (
             <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-              <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-48 object-cover" />
+              <img src={post.image || "/cargo.png"} alt={post.title} className="w-full h-48 object-cover" />
               <div className="p-6">
                 <p className="text-blue-600 text-sm mb-2">{post.date}</p>
                 <h3 className="font-bold text-xl mb-2">{post.title}</h3>

@@ -12,8 +12,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">Arthur Great Logistics</span>
             </div>
             <p className="text-sm mb-4">
-              Your trusted partner in global logistics solutions, providing comprehensive clearing, forwarding, and
-              logistics services worldwide.
+            Your Premier Freight forwarding partner For the freight forwarding
             </p>
             <div className="flex space-x-4">
               <Link href="#" className="text-gray-400 hover:text-blue-400 transition-colors">
@@ -109,7 +108,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
-                <span>123 Logistics Way, Business District, City</span>
+                <span>24, Hospital Road, Olodi-Apapa, Lagos - Nigeria.</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-blue-400" />
@@ -117,7 +116,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-blue-400" />
-                <span>info@globallogistics.com</span>
+                <span>admin@arthurgreatservices.com.ng</span>
               </li>
             </ul>
             <div className="mt-4">

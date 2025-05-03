@@ -29,7 +29,7 @@ const services = [
       "Real-time shipment tracking",
       "Consolidation services",
     ],
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/cargo.png?height=300&width=500",
   },
   {
     id: "haulage",
@@ -44,7 +44,7 @@ const services = [
       "Specialized equipment for oversized cargo",
       "GPS tracking on all vehicles",
     ],
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/cargo.png?height=300&width=500",
   },
   {
     id: "clearing-forwarding",
@@ -58,7 +58,7 @@ const services = [
       "Regulatory compliance management",
       "Customs bond processing",
     ],
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/cargo.png?height=300&width=500",
   },
   {
     id: "consultancy",
@@ -72,7 +72,7 @@ const services = [
       "Performance benchmarking",
       "Technology implementation guidance",
     ],
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/cargo.png?height=300&width=500",
   },
   {
     id: "air-freight",
@@ -86,7 +86,7 @@ const services = [
       "Temperature-controlled air freight",
       "Airport-to-airport and door-to-door options",
     ],
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/cargo.png?height=300&width=500",
   },
   {
     id: "warehousing",
@@ -100,7 +100,7 @@ const services = [
       "Cross-docking capabilities",
       "Distribution and fulfillment services",
     ],
-    image: "/placeholder.svg?height=300&width=500",
+    image: "/cargo.png?height=300&width=500",
   },
 ]
 
@@ -175,7 +175,7 @@ export default function ServicesPage() {
 
                 <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
                   <img
-                    src={service.image || "/placeholder.svg"}
+                    src={service.image || "/cargo.png"}
                     alt={service.title}
                     className="rounded-lg shadow-lg w-full"
                   />
