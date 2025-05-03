@@ -55,7 +55,17 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form 
+  target="_blank" 
+  action="https://formsubmit.co/admin@arthurgreatservices.com.ng" 
+  method="POST" 
+  className="space-y-6"
+>
+<input type="hidden" name="_captcha" value="false" />
+<input type="hidden" name="_autoresponse" value="Thank you for your quote request!" />
+<input type="hidden" name="_template" value="table" />
+<input type="hidden" name="_next" value="https://arthurgreatserviceslogistics.vercel.app/" />
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="space-y-2">
           <label htmlFor="name" className="text-sm font-medium">
