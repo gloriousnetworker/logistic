@@ -16,7 +16,7 @@ const blogPosts = [
     date: "May 15, 2023",
     author: "Michael Anderson",
     category: "Industry Trends",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/cargo.png?height=400&width=800",
     slug: "sustainable-logistics",
   },
   {
@@ -28,7 +28,7 @@ const blogPosts = [
     date: "April 22, 2023",
     author: "Sarah Johnson",
     category: "Supply Chain",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/cargo.png?height=400&width=800",
     slug: "supply-chain-disruptions",
   },
   {
@@ -40,7 +40,7 @@ const blogPosts = [
     date: "March 10, 2023",
     author: "David Chen",
     category: "Technology",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/cargo.png?height=400&width=800",
     slug: "technology-trends",
   },
   {
@@ -52,7 +52,7 @@ const blogPosts = [
     date: "February 18, 2023",
     author: "Emma Rodriguez",
     category: "Compliance",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/cargo.png?height=400&width=800",
     slug: "customs-compliance",
   },
   {
@@ -64,7 +64,7 @@ const blogPosts = [
     date: "January 25, 2023",
     author: "James Wilson",
     category: "Warehousing",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/cargo.png?height=400&width=800",
     slug: "warehouse-operations",
   },
   {
@@ -76,7 +76,7 @@ const blogPosts = [
     date: "December 12, 2022",
     author: "Priya Patel",
     category: "E-commerce",
-    image: "/placeholder.svg?height=400&width=800",
+    image: "/cargo.png?height=400&width=800",
     slug: "ecommerce-impact",
   },
 ]
@@ -109,7 +109,7 @@ export default function BlogPage() {
               <div className="mb-12">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden">
                   <img
-                    src={blogPosts[0].image || "/placeholder.svg"}
+                    src={blogPosts[0].image || "/cargo.png"}
                     alt={blogPosts[0].title}
                     className="w-full h-80 object-cover"
                   />
@@ -143,7 +143,7 @@ export default function BlogPage() {
               <div className="grid md:grid-cols-2 gap-8">
                 {blogPosts.slice(1).map((post) => (
                   <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src={post.image || "/placeholder.svg"} alt={post.title} className="w-full h-48 object-cover" />
+                    <img src={post.image || "/cargo.png"} alt={post.title} className="w-full h-48 object-cover" />
                     <div className="p-6">
                       <div className="flex items-center gap-4 text-xs text-gray-500 mb-3">
                         <div className="flex items-center">
@@ -229,7 +229,7 @@ export default function BlogPage() {
                   {blogPosts.slice(0, 3).map((post) => (
                     <li key={post.id} className="flex gap-3">
                       <img
-                        src={post.image || "/placeholder.svg"}
+                        src={post.image || "/cargo.png"}
                         alt={post.title}
                         className="w-16 h-16 object-cover rounded-md"
                       />

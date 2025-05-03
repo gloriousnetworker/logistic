@@ -12,7 +12,7 @@ const testimonials = [
     company: "Global Retail Inc.",
     quote:
       "GlobalLogistics has transformed our supply chain operations. Their expertise in freight forwarding and customs clearance has reduced our shipping times by 30% and saved us thousands in logistics costs.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/cargo.png?height=80&width=80",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const testimonials = [
     company: "Tech Solutions Ltd.",
     quote:
       "We've been working with GlobalLogistics for over 5 years, and they've consistently delivered exceptional service. Their tracking system gives us real-time visibility into our shipments, which is invaluable for our business.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/cargo.png?height=80&width=80",
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const testimonials = [
     company: "International Trading Co.",
     quote:
       "The team at GlobalLogistics understands the complexities of international shipping. Their customs expertise has helped us navigate complicated regulations and avoid costly delays at borders.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/cargo.png?height=80&width=80",
   },
 ]
 
@@ -72,7 +72,7 @@ export default function TestimonialCarousel() {
 
             <div className="flex items-center">
               <img
-                src={testimonials[currentIndex].image || "/placeholder.svg"}
+                src={testimonials[currentIndex].image || "/cargo.png"}
                 alt={testimonials[currentIndex].name}
                 className="w-16 h-16 rounded-full object-cover mr-4"
               />

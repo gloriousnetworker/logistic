@@ -39,7 +39,7 @@ export default function AboutPage() {
             </div>
             <div>
               <img
-                src="/placeholder.svg?height=400&width=600"
+                src="/cargo.png?height=400&width=600"
                 alt="GlobalLogistics headquarters"
                 className="rounded-lg shadow-lg"
               />
@@ -268,7 +268,7 @@ export default function AboutPage() {
 
           <div className="mb-12">
             <img
-              src="/placeholder.svg?height=500&width=1000"
+              src="/cargo.png?height=500&width=1000"
               alt="Global map showing GlobalLogistics presence"
               className="rounded-lg shadow-lg w-full"
             />
@@ -339,7 +339,7 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="/placeholder.svg?height=300&width=300"
+                src="/cargo.png?height=300&width=300"
                 alt="CEO portrait"
                 className="w-full h-64 object-cover"
               />
@@ -355,7 +355,7 @@ export default function AboutPage() {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="/placeholder.svg?height=300&width=300"
+                src="/cargo.png?height=300&width=300"
                 alt="COO portrait"
                 className="w-full h-64 object-cover"
               />
@@ -371,7 +371,7 @@ export default function AboutPage() {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="/placeholder.svg?height=300&width=300"
+                src="/cargo.png?height=300&width=300"
                 alt="CTO portrait"
                 className="w-full h-64 object-cover"
               />
@@ -386,7 +386,7 @@ export default function AboutPage() {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="/placeholder.svg?height=300&width=300"
+                src="/cargo.png?height=300&width=300"
                 alt="CFO portrait"
                 className="w-full h-64 object-cover"
               />
@@ -401,7 +401,7 @@ export default function AboutPage() {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="/placeholder.svg?height=300&width=300"
+                src="/cargo.png?height=300&width=300"
                 alt="Global Sales Director portrait"
                 className="w-full h-64 object-cover"
               />
@@ -416,7 +416,7 @@ export default function AboutPage() {
 
             <div className="bg-white rounded-lg shadow-md overflow-hidden">
               <img
-                src="/placeholder.svg?height=300&width=300"
+                src="/cargo.png?height=300&width=300"
                 alt="HR Director portrait"
                 className="w-full h-64 object-cover"
               />
