@@ -9,7 +9,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <Truck className="h-6 w-6 text-blue-400" />
-              <span className="text-xl font-bold text-white">GlobalLogistics</span>
+              <span className="text-xl font-bold text-white">Arthur Great Logistics</span>
             </div>
             <p className="text-sm mb-4">
               Your trusted partner in global logistics solutions, providing comprehensive clearing, forwarding, and
@@ -113,7 +113,7 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-blue-400" />
-                <span>+1 (555) 123-4567</span>
+                <span>+234 906 036 0506</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-blue-400" />
@@ -129,7 +129,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-gray-800 mt-8 pt-8 text-sm text-center">
-          <p>&copy; {new Date().getFullYear()} GlobalLogistics. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Arthur Great Logistics. All rights reserved.</p>
         </div>
       </div>
     </footer>

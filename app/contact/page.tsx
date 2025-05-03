@@ -44,8 +44,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-bold text-lg">Phone</h3>
-                    <p className="text-gray-600">Main: +44 (0) 20 1234 5678</p>
-                    <p className="text-gray-600">Customer Support: +44 (0) 20 8765 4321</p>
+                    <p className="text-gray-600">Main: +234 906 036 0506</p>
+                    <p className="text-gray-600">Customer Support: +234 906 036 0506</p>
                   </div>
                 </div>
 

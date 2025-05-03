@@ -21,7 +21,7 @@ export default function Navigation() {
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2">
             <Truck className="h-6 w-6 text-blue-600" />
-            <span className="text-xl font-bold hidden sm:inline-block">GlobalLogistics</span>
+            <span className="text-xl font-bold hidden sm:inline-block">Arthur Great Logistics</span>
           </Link>
         </div>
 
@@ -85,7 +85,7 @@ export default function Navigation() {
               <div className="flex items-center justify-between mb-6">
                 <Link href="/" className="flex items-center gap-2">
                   <Truck className="h-6 w-6 text-blue-600" />
-                  <span className="text-xl font-bold">GlobalLogistics</span>
+                  <span className="text-xl font-bold">Arthur Great Logistics</span>
                 </Link>
               </div>
 

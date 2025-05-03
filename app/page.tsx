@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             <div className="hidden md:block">
               <img
-                src="/placeholder.svg?height=400&width=500"
+                src="/logolog.svg?height=400&width=500"
                 alt="Logistics operations"
                 className="rounded-lg shadow-lg"
               />
@@ -217,7 +217,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <img
-                  src="/placeholder.svg?height=400&width=500"
+                  src="/cargo.svg?height=400&width=500"
                   alt="Logistics team"
                   className="rounded-lg shadow-lg"
                 />
