@@ -49,7 +49,7 @@ export default function Home() {
             </div>
             <div className="hidden md:block">
               <img
-                src="/logolog.svg?height=400&width=500"
+                src="/placeholder.svg?height=400&width=500"
                 alt="Logistics operations"
                 className="rounded-lg shadow-lg"
               />
