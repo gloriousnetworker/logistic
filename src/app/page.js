@@ -7,9 +7,11 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLoading(false); // Simulate loading completion after 5 seconds
     }, 5000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
@@ -24,13 +26,17 @@ export default function HomePage() {
         ease: 'power1.inOut',
       });
 
-      timeline.to('.construction-head', {
-        scale: 1.1,
-        duration: 0.6,
-        ease: 'bounce.out',
-        yoyo: true,
-        repeat: 1,
-      }, 0); // Start head animation at the same time as arm animation
+      timeline.to(
+        '.construction-head',
+        {
+          scale: 1.1,
+          duration: 0.6,
+          ease: 'bounce.out',
+          yoyo: true,
+          repeat: 1,
+        },
+        0 // Start head animation at the same time as arm animation
+      );
     }
   }, [loading]);
 
@@ -48,7 +54,6 @@ export default function HomePage() {
         {/* Construction Animation */}
         {loading ? (
           <div className="flex items-center justify-center space-x-4 animate__animated animate__fadeInUp animate__delay-2s">
-            {/* Animated SVG (Sleek Construction Worker) */}
             <svg
               className="w-24 h-24"
               xmlns="http://www.w3.org/2000/svg"
@@ -97,9 +102,9 @@ export default function HomePage() {
 
         {/* Under Construction Message */}
         <div className="mt-8 flex flex-col items-center space-y-2 animate__animated animate__fadeInUp animate__delay-3s">
-          <div className="text-3xl font-semibold text-white">We're Building Something Amazing!</div>
+          <div className="text-3xl font-semibold text-white">We&apos;re Building Something Amazing!</div>
           <p className="text-lg text-white opacity-80">
-            We're working hard to bring you the best experience. Stay tuned for updates.
+            We&apos;re working hard to bring you the best experience. Stay tuned for updates.
           </p>
         </div>
 
