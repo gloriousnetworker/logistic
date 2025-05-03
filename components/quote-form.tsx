@@ -95,7 +95,18 @@ export default function QuoteForm({ quoteType }: QuoteFormProps) {
   // Render the appropriate form based on the quote type
   if (quoteType === "Freight Services") {
     return (
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form 
+  target="_blank" 
+  action="https://formsubmit.co/admin@arthurgreatservices.com.ng" 
+  method="POST" 
+  className="space-y-6"
+  
+>
+<input type="hidden" name="_captcha" value="false" />
+<input type="hidden" name="_autoresponse" value="Thank you for your quote request!" />
+<input type="hidden" name="_template" value="table" />
+<input type="hidden" name="_next" value="https://arthurgreatserviceslogistics.vercel.app/" />
+<input type="hidden" name="quoteType" value={quoteType} />
         <div className="space-y-4">
           <h3 className="text-lg font-medium">Service Information</h3>
 
