@@ -294,103 +294,118 @@ export default function Home() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-16 bg-gray-50">
-          <div className="container">
-            <div className="grid md:grid-cols-2 gap-12">
-              <div className="space-y-6">
-                <h2 className="text-3xl font-bold">Get in Touch</h2>
-                <p className="text-gray-600">Have questions about our services? Our team is ready to assist you.</p>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <MapPin className="h-5 w-5 text-blue-600" />
-                    <span>123 Logistics Way, Business District, City</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Phone className="h-5 w-5 text-blue-600" />
-                    <span>+1 (555) 123-4567</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Mail className="h-5 w-5 text-blue-600" />
-                    <span>info@globallogistics.com</span>
-                  </div>
-                </div>
+<section id="contact" className="py-16 bg-gray-50">
+  <div className="container">
+    <div className="grid md:grid-cols-2 gap-12">
+      <div className="space-y-6">
+        <h2 className="text-3xl font-bold">Get in Touch</h2>
+        <p className="text-gray-600">Have questions about our services? Our team is ready to assist you.</p>
+        <div className="space-y-4">
+          <div className="flex items-center gap-3">
+            <MapPin className="h-5 w-5 text-blue-600" />
+            <span>24, Hospital Road, Olodi-Apapa, Lagos - Nigeria.</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Phone className="h-5 w-5 text-blue-600" />
+            <span>+234 906 036 0506</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Mail className="h-5 w-5 text-blue-600" />
+            <span>admin@arthurgreatservices.com.ng</span>
+          </div>
+        </div>
 
-                <div className="pt-4">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.3526145645607!2d3.3751832!3d6.5951815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8cf6d29c2d5d%3A0x76c3e96a1f1b2e48!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus"
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-lg shadow-md"
-                    title="Office Location"
-                  ></iframe>
-                </div>
-              </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
-                <form className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label htmlFor="name" className="text-sm font-medium">
-                        Full Name
-                      </label>
-                      <input id="name" className="w-full px-3 py-2 border rounded-md" placeholder="John Doe" />
-                    </div>
-                    <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">
-                        Email Address
-                      </label>
-                      <input
-                        id="email"
-                        type="email"
-                        className="w-full px-3 py-2 border rounded-md"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="company" className="text-sm font-medium">
-                      Company Name
-                    </label>
-                    <input
-                      id="company"
-                      className="w-full px-3 py-2 border rounded-md"
-                      placeholder="Your Company Ltd."
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="service" className="text-sm font-medium">
-                      Service Interested In
-                    </label>
-                    <select id="service" className="w-full px-3 py-2 border rounded-md">
-                      <option value="">Select a service</option>
-                      <option value="freight">Freight Forwarding</option>
-                      <option value="haulage">Haulage Services</option>
-                      <option value="clearing">Clearing & Forwarding</option>
-                      <option value="consultancy">Logistics Consultancy</option>
-                      <option value="air">Air Freight</option>
-                      <option value="warehousing">Warehousing</option>
-                    </select>
-                  </div>
-                  <div className="space-y-2">
-                    <label htmlFor="message" className="text-sm font-medium">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      rows={4}
-                      className="w-full px-3 py-2 border rounded-md"
-                      placeholder="Tell us about your logistics needs..."
-                    ></textarea>
-                  </div>
-                  <Button className="w-full">Send Message</Button>
-                </form>
-              </div>
+        <div className="pt-4">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.3526145645607!2d3.3751832!3d6.5951815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8cf6d29c2d5d%3A0x76c3e96a1f1b2e48!2sLagos%2C%20Nigeria!5e0!3m2!1sen!2sus!4v1651234567890!5m2!1sen!2sus"
+            width="100%"
+            height="250"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="rounded-lg shadow-md"
+            title="Office Location"
+          ></iframe>
+        </div>
+      </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <form 
+          action="https://formsubmit.co/admin@arthurgreatservices.com.ng" 
+          method="POST" 
+          className="space-y-4"
+        >
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_autoresponse" value="Thank you for contacting Arthur Great Services. We'll get back to you shortly." />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://arthurgreatserviceslogistics.vercel.app/" />
+          <input type="hidden" name="subject" value="New Contact Request" />
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="space-y-2">
+              <label htmlFor="name" className="text-sm font-medium">
+                Full Name
+              </label>
+              <input id="name" name="name" className="w-full px-3 py-2 border rounded-md" placeholder="John Doe" required />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email" className="text-sm font-medium">
+                Email Address
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                className="w-full px-3 py-2 border rounded-md"
+                placeholder="john@example.com"
+                required
+              />
             </div>
           </div>
-        </section>
+          <div className="space-y-2">
+            <label htmlFor="company" className="text-sm font-medium">
+              Company Name
+            </label>
+            <input
+              id="company"
+              name="company"
+              className="w-full px-3 py-2 border rounded-md"
+              placeholder="Your Company Ltd."
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="service" className="text-sm font-medium">
+              Service Interested In
+            </label>
+            <select id="service" name="service" className="w-full px-3 py-2 border rounded-md">
+              <option value="">Select a service</option>
+              <option value="freight">Freight Forwarding</option>
+              <option value="haulage">Haulage Services</option>
+              <option value="clearing">Clearing & Forwarding</option>
+              <option value="consultancy">Logistics Consultancy</option>
+              <option value="air">Air Freight</option>
+              <option value="warehousing">Warehousing</option>
+            </select>
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="message" className="text-sm font-medium">
+              Message
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={4}
+              className="w-full px-3 py-2 border rounded-md"
+              placeholder="Tell us about your logistics needs..."
+            ></textarea>
+          </div>
+          <Button type="submit" className="w-full">Send Message</Button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
       </main>
 
       {/* Footer is now in a separate component */}
