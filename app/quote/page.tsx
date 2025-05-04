@@ -8,9 +8,11 @@ export default function QuotePage() {
   return (
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-10">
+
+        {/* Gradient Header */}
+        <div className="text-center mb-10 bg-gradient-to-r from-green-600 to-green-800 text-white py-12 px-4 sm:px-6 lg:px-8 rounded-lg">
           <h1 className="text-3xl font-bold mb-2">Request a Quote</h1>
-          <p className="text-gray-600">
+          <p className="text-green-100">
             Fill out the form below to receive a customized quote for your logistics needs
           </p>
         </div>
@@ -67,7 +69,7 @@ export default function QuotePage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
+              <div className="inline-flex items-center justify-center p-3 bg-green-100 rounded-full text-green-600 mb-4">
                 <Globe className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-bold mb-2">Global Network</h3>
@@ -77,7 +79,7 @@ export default function QuotePage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
+              <div className="inline-flex items-center justify-center p-3 bg-green-100 rounded-full text-green-600 mb-4">
                 <Truck className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-bold mb-2">Customized Solutions</h3>
@@ -88,7 +90,7 @@ export default function QuotePage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="inline-flex items-center justify-center p-3 bg-blue-100 rounded-full text-blue-600 mb-4">
+              <div className="inline-flex items-center justify-center p-3 bg-green-100 rounded-full text-green-600 mb-4">
                 <CheckCircle2 className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-bold mb-2">Reliability</h3>

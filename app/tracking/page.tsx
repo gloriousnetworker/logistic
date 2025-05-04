@@ -218,31 +218,31 @@ export default function TrackingPage() {
     }
   }
 
-  // Helper function to get status color
+  // Helper function to get status color - Updated to use green tones
   const getStatusColor = (status: string) => {
     switch (status) {
       case "delivered":
         return "text-green-600"
       case "in-transit":
-        return "text-blue-600"
+        return "text-green-500"
       case "processing":
-        return "text-yellow-600"
+        return "text-green-400"
       default:
-        return "text-gray-600"
+        return "text-green-300"
     }
   }
 
-  // Helper function to get status icon
+  // Helper function to get status icon - Updated icon colors to green
   const getStatusIcon = (status: string) => {
     switch (status) {
       case "delivered":
         return <CheckCircle2 className="h-6 w-6 text-green-600" />
       case "in-transit":
-        return <Truck className="h-6 w-6 text-blue-600" />
+        return <Truck className="h-6 w-6 text-green-500" />
       case "processing":
-        return <Clock className="h-6 w-6 text-yellow-600" />
+        return <Clock className="h-6 w-6 text-green-400" />
       default:
-        return <AlertCircle className="h-6 w-6 text-gray-600" />
+        return <AlertCircle className="h-6 w-6 text-green-300" />
     }
   }
 
@@ -250,18 +250,18 @@ export default function TrackingPage() {
     <div className="container py-12">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold mb-2">Track Your Shipment</h1>
-          <p className="text-gray-600">Enter your tracking number to get real-time updates on your shipment</p>
+          <h1 className="text-3xl font-bold mb-2 text-green-700">Track Your Shipment</h1>
+          <p className="text-green-600">Enter your tracking number to get real-time updates on your shipment</p>
         </div>
 
         <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Shipment Tracking</CardTitle>
-            <CardDescription>
+          <CardHeader className="border-b border-green-100">
+            <CardTitle className="text-green-700">Shipment Tracking</CardTitle>
+            <CardDescription className="text-green-500">
               Enter your tracking number to get detailed information about your shipment
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-6">
             <form onSubmit={handleTracking} className="flex flex-col sm:flex-row gap-4">
               <div className="flex-1">
                 <Input
@@ -269,17 +269,17 @@ export default function TrackingPage() {
                   placeholder="Enter tracking number (e.g., GL123456789)"
                   value={trackingNumber}
                   onChange={(e) => setTrackingNumber(e.target.value)}
-                  className="w-full"
+                  className="w-full border-green-200 focus:border-green-400 focus:ring-green-400"
                 />
                 {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
               </div>
-              <Button type="submit" className="whitespace-nowrap">
+              <Button type="submit" className="whitespace-nowrap bg-green-600 hover:bg-green-700">
                 <Search className="mr-2 h-4 w-4" /> Track Shipment
               </Button>
             </form>
 
             <div className="mt-4">
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-green-500">
                 Example tracking numbers for demo: GL123456789, GL987654321, GL456789123
               </p>
             </div>
@@ -292,8 +292,8 @@ export default function TrackingPage() {
               <CardHeader>
                 <div className="flex justify-between items-start">
                   <div>
-                    <CardTitle>Shipment {trackingNumber}</CardTitle>
-                    <CardDescription>
+                    <CardTitle className="text-green-700">Shipment {trackingNumber}</CardTitle>
+                    <CardDescription className="text-green-500">
                       {shipment.origin} to {shipment.destination}
                     </CardDescription>
                   </div>
@@ -311,34 +311,34 @@ export default function TrackingPage() {
               </CardHeader>
               <CardContent>
                 <Tabs defaultValue="details">
-                  <TabsList className="grid w-full grid-cols-2">
-                    <TabsTrigger value="details">Shipment Details</TabsTrigger>
-                    <TabsTrigger value="history">Tracking History</TabsTrigger>
+                  <TabsList className="grid w-full grid-cols-2 bg-green-50">
+                    <TabsTrigger value="details" className="data-[state=active]:bg-green-100 data-[state=active]:text-green-700">Shipment Details</TabsTrigger>
+                    <TabsTrigger value="history" className="data-[state=active]:bg-green-100 data-[state=active]:text-green-700">Tracking History</TabsTrigger>
                   </TabsList>
 
                   <TabsContent value="details" className="pt-4">
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-4">
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Origin</h3>
-                          <p className="font-medium">{shipment.origin}</p>
+                          <h3 className="text-sm font-medium text-green-500">Origin</h3>
+                          <p className="font-medium text-green-700">{shipment.origin}</p>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Destination</h3>
-                          <p className="font-medium">{shipment.destination}</p>
+                          <h3 className="text-sm font-medium text-green-500">Destination</h3>
+                          <p className="font-medium text-green-700">{shipment.destination}</p>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Customer</h3>
-                          <p className="font-medium">{shipment.customer}</p>
+                          <h3 className="text-sm font-medium text-green-500">Customer</h3>
+                          <p className="font-medium text-green-700">{shipment.customer}</p>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Shipment Type</h3>
-                          <p className="font-medium">{shipment.shipmentType}</p>
+                          <h3 className="text-sm font-medium text-green-500">Shipment Type</h3>
+                          <p className="font-medium text-green-700">{shipment.shipmentType}</p>
                         </div>
                       </div>
                       <div className="space-y-4">
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Status</h3>
+                          <h3 className="text-sm font-medium text-green-500">Status</h3>
                           <p className={`font-medium ${getStatusColor(shipment.status)}`}>
                             {shipment.status === "delivered"
                               ? "Delivered"
@@ -348,20 +348,20 @@ export default function TrackingPage() {
                           </p>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">
+                          <h3 className="text-sm font-medium text-green-500">
                             {shipment.status === "delivered" ? "Delivery Date" : "Estimated Delivery"}
                           </h3>
-                          <p className="font-medium">
+                          <p className="font-medium text-green-700">
                             {shipment.status === "delivered" ? shipment.actualDelivery : shipment.estimatedDelivery}
                           </p>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Weight</h3>
-                          <p className="font-medium">{shipment.weight}</p>
+                          <h3 className="text-sm font-medium text-green-500">Weight</h3>
+                          <p className="font-medium text-green-700">{shipment.weight}</p>
                         </div>
                         <div>
-                          <h3 className="text-sm font-medium text-gray-500">Tracking Number</h3>
-                          <p className="font-medium">{trackingNumber}</p>
+                          <h3 className="text-sm font-medium text-green-500">Tracking Number</h3>
+                          <p className="font-medium text-green-700">{trackingNumber}</p>
                         </div>
                       </div>
                     </div>
@@ -369,25 +369,25 @@ export default function TrackingPage() {
 
                   <TabsContent value="history" className="pt-4">
                     <div className="relative">
-                      <div className="absolute left-4 top-0 h-full w-0.5 bg-gray-200"></div>
+                      <div className="absolute left-4 top-0 h-full w-0.5 bg-green-200"></div>
                       <div className="space-y-6">
                         {shipment.trackingHistory.map((event: any, index: number) => (
                           <div key={index} className="relative pl-10">
                             <div
                               className={`absolute left-0 top-1 flex h-8 w-8 items-center justify-center rounded-full border ${
-                                event.current ? "border-blue-600 bg-blue-50" : "border-gray-200 bg-white"
+                                event.current ? "border-green-600 bg-green-50" : "border-green-200 bg-white"
                               }`}
                             >
                               {React.createElement(event.icon, {
-                                className: `h-4 w-4 ${event.current ? "text-blue-600" : "text-gray-500"}`,
+                                className: `h-4 w-4 ${event.current ? "text-green-600" : "text-green-400"}`,
                               })}
                             </div>
                             <div className={`${event.current ? "font-medium" : ""}`}>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-green-500">
                                 {event.date} • {event.time}
                               </p>
-                              <p className="font-medium">{event.status}</p>
-                              <p className="text-sm">{event.location}</p>
+                              <p className="font-medium text-green-700">{event.status}</p>
+                              <p className="text-sm text-green-600">{event.location}</p>
                             </div>
                           </div>
                         ))}
@@ -396,11 +396,11 @@ export default function TrackingPage() {
                   </TabsContent>
                 </Tabs>
               </CardContent>
-              <CardFooter className="flex justify-between border-t pt-6">
-                <Button variant="outline" asChild>
+              <CardFooter className="flex justify-between border-t border-green-100 pt-6">
+                <Button variant="outline" asChild className="border-green-500 text-green-600 hover:bg-green-50">
                   <Link href="/contact">Need Help?</Link>
                 </Button>
-                <Button asChild>
+                <Button asChild className="bg-green-600 hover:bg-green-700">
                   <Link href={`/tracking/details/${trackingNumber}`}>View Detailed Report</Link>
                 </Button>
               </CardFooter>
@@ -408,49 +408,49 @@ export default function TrackingPage() {
 
             {/* Related Services */}
             <div className="mt-8">
-              <h2 className="text-xl font-bold mb-4">Related Services</h2>
+              <h2 className="text-xl font-bold mb-4 text-green-700">Related Services</h2>
               <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-                <Card>
+                <Card className="border-green-100">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Need Assistance?</CardTitle>
+                    <CardTitle className="text-lg text-green-700">Need Assistance?</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-green-600">
                       Our customer service team is available 24/7 to help with your shipment.
                     </p>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline" asChild className="w-full">
+                    <Button variant="outline" asChild className="w-full border-green-500 text-green-600 hover:bg-green-50">
                       <Link href="/contact">Contact Us</Link>
                     </Button>
                   </CardFooter>
                 </Card>
 
-                <Card>
+                <Card className="border-green-100">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Schedule a Pickup</CardTitle>
+                    <CardTitle className="text-lg text-green-700">Schedule a Pickup</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-green-600">
                       Need to ship something? Schedule a pickup from your location.
                     </p>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline" asChild className="w-full">
+                    <Button variant="outline" asChild className="w-full border-green-500 text-green-600 hover:bg-green-50">
                       <Link href="/services">Our Services</Link>
                     </Button>
                   </CardFooter>
                 </Card>
 
-                <Card>
+                <Card className="border-green-100">
                   <CardHeader className="pb-2">
-                    <CardTitle className="text-lg">Get a Quote</CardTitle>
+                    <CardTitle className="text-lg text-green-700">Get a Quote</CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <p className="text-sm text-gray-600">Request a customized quote for your shipping needs.</p>
+                    <p className="text-sm text-green-600">Request a customized quote for your shipping needs.</p>
                   </CardContent>
                   <CardFooter>
-                    <Button variant="outline" asChild className="w-full">
+                    <Button variant="outline" asChild className="w-full border-green-500 text-green-600 hover:bg-green-50">
                       <Link href="/quote">Request Quote</Link>
                     </Button>
                   </CardFooter>
@@ -462,10 +462,10 @@ export default function TrackingPage() {
 
         {/* Need Assistance Form */}
         {!shipment && !error && (
-          <Card className="mt-12">
+          <Card className="mt-12 border-green-100">
             <CardHeader>
-              <CardTitle>Need Assistance with Tracking?</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-green-700">Need Assistance with Tracking?</CardTitle>
+              <CardDescription className="text-green-500">
                 If you're having trouble tracking your shipment, fill out the form below and our team will assist you.
               </CardDescription>
             </CardHeader>
@@ -473,49 +473,49 @@ export default function TrackingPage() {
               <form onSubmit={handleAssistanceRequest} className="space-y-4">
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <label htmlFor="name" className="text-sm font-medium">
+                    <label htmlFor="name" className="text-sm font-medium text-green-600">
                       Full Name
                     </label>
-                    <Input id="name" name="name" placeholder="John Doe" required />
+                    <Input id="name" name="name" placeholder="John Doe" required className="border-green-200 focus:border-green-400 focus:ring-green-400" />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">
+                    <label htmlFor="email" className="text-sm font-medium text-green-600">
                       Email Address
                     </label>
-                    <Input id="email" name="email" type="email" placeholder="john@example.com" required />
+                    <Input id="email" name="email" type="email" placeholder="john@example.com" required className="border-green-200 focus:border-green-400 focus:ring-green-400" />
                   </div>
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="space-y-2">
-                    <label htmlFor="phone" className="text-sm font-medium">
+                    <label htmlFor="phone" className="text-sm font-medium text-green-600">
                       Phone Number
                     </label>
-                    <Input id="phone" name="phone" placeholder="+1 (555) 123-4567" required />
+                    <Input id="phone" name="phone" placeholder="+1 (555) 123-4567" required className="border-green-200 focus:border-green-400 focus:ring-green-400" />
                   </div>
                   <div className="space-y-2">
-                    <label htmlFor="trackingNumber" className="text-sm font-medium">
+                    <label htmlFor="trackingNumber" className="text-sm font-medium text-green-600">
                       Tracking Number (if available)
                     </label>
-                    <Input id="trackingNumber" name="trackingNumber" placeholder="e.g., GL123456789" />
+                    <Input id="trackingNumber" name="trackingNumber" placeholder="e.g., GL123456789" className="border-green-200 focus:border-green-400 focus:ring-green-400" />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="message" className="text-sm font-medium">
+                  <label htmlFor="message" className="text-sm font-medium text-green-600">
                     How can we help you?
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
-                    className="w-full px-3 py-2 border rounded-md"
+                    className="w-full px-3 py-2 border rounded-md border-green-200 focus:border-green-400 focus:ring-green-400 focus:outline-none"
                     placeholder="Please describe the issue you're experiencing with tracking your shipment..."
                     required
                   ></textarea>
                 </div>
 
-                <Button type="submit" className="w-full" disabled={isSubmitting}>
+                <Button type="submit" className="w-full bg-green-600 hover:bg-green-700" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Submit Request"}
                 </Button>
               </form>
@@ -526,56 +526,56 @@ export default function TrackingPage() {
         {/* FAQ Section */}
         {!shipment && !error && (
           <div className="mt-12">
-            <h2 className="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-bold mb-6 text-green-700">Frequently Asked Questions</h2>
             <div className="grid gap-4">
-              <Card>
+              <Card className="border-green-100">
                 <CardHeader>
-                  <CardTitle className="text-lg">How do I track my shipment?</CardTitle>
+                  <CardTitle className="text-lg text-green-700">How do I track my shipment?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-green-600">
                     Enter your tracking number in the field above. Your tracking number was provided in your shipping
                     confirmation email or receipt.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="border-green-100">
                 <CardHeader>
-                  <CardTitle className="text-lg">What if I lost my tracking number?</CardTitle>
+                  <CardTitle className="text-lg text-green-700">What if I lost my tracking number?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-green-600">
                     If you've lost your tracking number, please contact our customer service team with your order
                     details, and they'll help you locate your shipment.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="border-green-100">
                 <CardHeader>
-                  <CardTitle className="text-lg">How often is tracking information updated?</CardTitle>
+                  <CardTitle className="text-lg text-green-700">How often is tracking information updated?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
+                  <p className="text-green-600">
                     Tracking information is typically updated within 24 hours of a shipment milestone. For international
                     shipments, updates may take longer depending on customs processing.
                   </p>
                 </CardContent>
               </Card>
 
-              <Card>
+              <Card className="border-green-100">
                 <CardHeader>
-                  <CardTitle className="text-lg">What do the different shipment statuses mean?</CardTitle>
+                  <CardTitle className="text-lg text-green-700">What do the different shipment statuses mean?</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">
-                    <span className="font-medium">Processing:</span> Your shipment has been received and is being
+                  <p className="text-green-600">
+                    <span className="font-medium text-green-700">Processing:</span> Your shipment has been received and is being
                     prepared for transit.
                     <br />
-                    <span className="font-medium">In Transit:</span> Your shipment is on its way to the destination.
+                    <span className="font-medium text-green-700">In Transit:</span> Your shipment is on its way to the destination.
                     <br />
-                    <span className="font-medium">Delivered:</span> Your shipment has been delivered to the recipient.
+                    <span className="font-medium text-green-700">Delivered:</span> Your shipment has been delivered to the recipient.
                   </p>
                 </CardContent>
               </Card>

@@ -108,7 +108,7 @@ export default function ServicesPage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-blue-600 text-white py-16 md:py-24">
+      <section className="bg-green-600 text-white py-16 md:py-24 px-4 lg:px-8">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-3xl md:text-5xl font-bold mb-6">Comprehensive Logistics Solutions</h1>
@@ -118,12 +118,12 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/quote">
-                <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+                <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
                   Request a Quote
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-700">
+                <Button size="lg" variant="outline" className="border-white text-green-700 hover:bg-green-700">
                   Contact Us
                 </Button>
               </Link>
@@ -133,10 +133,10 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Overview */}
-      <section className="py-16">
+      <section className="py-16 px-4 lg:px-8">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold mb-4">Our Services</h2>
+            <h2 className="text-3xl font-bold mb-4 text-green-600">Our Services</h2>
             <p className="text-gray-600">
               We provide a comprehensive range of logistics services to meet all your shipping and supply chain needs.
               Our experienced team ensures efficient, reliable, and cost-effective solutions for businesses of all
@@ -151,23 +151,23 @@ export default function ServicesPage() {
                 className={`grid md:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? "md:flex-row-reverse" : ""}`}
               >
                 <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <div className="inline-flex items-center justify-center p-2 bg-blue-100 rounded-lg text-blue-600 mb-4">
+                  <div className="inline-flex items-center justify-center p-2 bg-green-100 rounded-lg text-green-600 mb-4">
                     {React.createElement(service.icon, { className: "h-8 w-8" })}
                   </div>
-                  <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                  <h3 className="text-2xl font-bold mb-4 text-green-700">{service.title}</h3>
                   <p className="text-gray-600 mb-6">{service.description}</p>
 
                   <div className="space-y-3 mb-8">
                     {service.features.map((feature, i) => (
                       <div key={i} className="flex items-start gap-3">
-                        <CheckCircle2 className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle2 className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                         <span>{feature}</span>
                       </div>
                     ))}
                   </div>
 
                   <Link href={`/services/${service.id}`}>
-                    <Button>
+                    <Button className="text-white bg-green-600 hover:bg-green-700">
                       Learn More <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -187,10 +187,10 @@ export default function ServicesPage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50 px-4 lg:px-8">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold mb-4">Why Choose Our Services</h2>
+            <h2 className="text-3xl font-bold mb-4 text-green-600">Why Choose Our Services</h2>
             <p className="text-gray-600">
               With years of experience in the logistics industry, we've built a reputation for reliability, efficiency,
               and exceptional customer service.
@@ -199,7 +199,7 @@ export default function ServicesPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-blue-600 mb-4">
+              <div className="text-green-600 mb-4">
                 <Globe className="h-10 w-10" />
               </div>
               <h3 className="text-xl font-bold mb-2">Global Network</h3>
@@ -209,7 +209,7 @@ export default function ServicesPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-blue-600 mb-4">
+              <div className="text-green-600 mb-4">
                 <Shield className="h-10 w-10" />
               </div>
               <h3 className="text-xl font-bold mb-2">Reliability & Security</h3>
@@ -219,7 +219,7 @@ export default function ServicesPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-blue-600 mb-4">
+              <div className="text-green-600 mb-4">
                 <BarChart3 className="h-10 w-10" />
               </div>
               <h3 className="text-xl font-bold mb-2">Cost Efficiency</h3>
@@ -229,7 +229,7 @@ export default function ServicesPage() {
             </div>
 
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="text-blue-600 mb-4">
+              <div className="text-green-600 mb-4">
                 <Truck className="h-10 w-10" />
               </div>
               <h3 className="text-xl font-bold mb-2">Modern Fleet</h3>
@@ -242,7 +242,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-blue-600 text-white">
+      <section className="py-16 bg-white-600 text-green-700 px-4 lg:px-8">
         <div className="container text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to Optimize Your Logistics?</h2>
           <p className="text-xl opacity-90 max-w-3xl mx-auto mb-8">
@@ -250,12 +250,12 @@ export default function ServicesPage() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/quote">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Button size="lg" className="bg-white text-green-600 hover:bg-gray-100">
                 Request a Quote
               </Button>
             </Link>
             <Link href="/contact">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-700">
+              <Button size="lg" variant="outline" className="border-green text-green-700 hover:bg-green-700">
                 Contact Us
               </Button>
             </Link>
