@@ -29,7 +29,7 @@ export default function Navigation() {
               className="h-12 w-12"
             />
             <span className="text-xl font-bold text-green-800 hidden sm:inline-block">
-              Arthur Great Logistics
+            LOGISTICS - Chiagoziem Motors Limited
             </span>
           </Link>
         </div>

@@ -345,10 +345,10 @@ export default function Home() {
                 viewport={{ once: true }}
                 className="space-y-6"
               >
-                <h2 className="text-3xl font-bold text-green-800">Why Choose Arthur Great Logistics?</h2>
+                <h2 className="text-3xl font-bold text-green-800">Why Choose LOGISTICS - Chiagoziem Motors Limited?</h2>
                 <p className="text-gray-600">
                   With over 15 years of experience in the logistics industry, we've built a reputation for reliability,
-                  efficiency, and exceptional customer service.
+                  efficiency, and exceptional customer service. The Lord is our song as we serve you.
                 </p>
                 <div className="space-y-4">
                   {[
@@ -475,7 +475,7 @@ export default function Home() {
                   className="space-y-4"
                 >
                   <input type="hidden" name="_captcha" value="false" />
-                  <input type="hidden" name="_autoresponse" value="Thank you for contacting Arthur Great Services. We'll get back to you shortly." />
+                  <input type="hidden" name="_autoresponse" value="Thank you for contacting LOGISTICS - Chiagoziem Motors Limited. We'll get back to you shortly." />
                   <input type="hidden" name="_template" value="table" />
                   <input type="hidden" name="_next" value="https://arthurgreatserviceslogistics.vercel.app/" />
                   <input type="hidden" name="subject" value="New Contact Request" />

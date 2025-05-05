@@ -11,16 +11,16 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <img
-              src="/AGS.png"
-              alt="Arthur Great Logistics Logo"
-              className="h-12 w-12 object-contain"
+                src="/AGS.png"
+                alt="Chiagoziem Motors Limited Logo"
+                className="h-12 w-12 object-contain"
               />
               <span className="text-xl font-bold text-white hidden sm:inline-block">
-              Arthur Great Logistics
+                LOGISTICS - Chiagoziem Motors Limited
               </span>
             </div>
             <p className="text-sm mb-4">
-              Your premier freight forwarding partner for seamless global logistics.
+              The Lord is my song. Your premier freight forwarding partner for seamless global logistics.
             </p>
             <div className="flex space-x-4">
               {[
@@ -46,12 +46,14 @@ export default function Footer() {
             <h3 className="text-lg font-bold text-white mb-4">Our Services</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link
-                  href="/services/freight-forwarding"
+                <a
+                  href="https://freight-forward-two.vercel.app/" // External URL for freight services
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-green-300 transition-colors"
                 >
                   Freight Forwarding
-                </Link>
+                </a>
               </li>
               <li>
                 <Link
@@ -59,6 +61,22 @@ export default function Footer() {
                   className="hover:text-green-300 transition-colors"
                 >
                   Logistics Consultancy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services/haulage"
+                  className="hover:text-green-300 transition-colors"
+                >
+                  Haulage Services
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/services/air-freight"
+                  className="hover:text-green-300 transition-colors"
+                >
+                  Air Freight
                 </Link>
               </li>
             </ul>
@@ -116,7 +134,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="border-t border-green-800 mt-8 pt-8 text-sm text-center">
-          <p>&copy; {new Date().getFullYear()} Arthur Great Logistics. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} LOGISTICS - Chiagoziem Motors Limited - The Lord is my song. All rights reserved.</p>
         </div>
       </div>
     </footer>
