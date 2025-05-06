@@ -7,27 +7,27 @@ import { Button } from "@/components/ui/button"
 const testimonials = [
   {
     id: 1,
-    name: "John Smith",
+    name: "Chinonso Okeke",
     position: "Supply Chain Manager",
-    company: "Global Retail Inc.",
+    company: "Eze Global Ventures",
     quote:
       "GlobalLogistics has transformed our supply chain operations. Their expertise in freight forwarding and customs clearance has reduced our shipping times by 30% and saved us thousands in logistics costs.",
     image: "/cargo.png?height=80&width=80",
   },
   {
     id: 2,
-    name: "Sarah Johnson",
+    name: "Adaobi Nwankwo",
     position: "Operations Director",
-    company: "Tech Solutions Ltd.",
+    company: "Tech Solutions Nigeria Ltd.",
     quote:
       "We've been working with GlobalLogistics for over 5 years, and they've consistently delivered exceptional service. Their tracking system gives us real-time visibility into our shipments, which is invaluable for our business.",
     image: "/cargo.png?height=80&width=80",
   },
   {
     id: 3,
-    name: "Michael Chen",
+    name: "Ifeanyi Eze",
     position: "Import/Export Manager",
-    company: "International Trading Co.",
+    company: "Nigerian Trading Co.",
     quote:
       "The team at GlobalLogistics understands the complexities of international shipping. Their customs expertise has helped us navigate complicated regulations and avoid costly delays at borders.",
     image: "/cargo.png?height=80&width=80",

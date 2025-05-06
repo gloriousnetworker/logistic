@@ -135,7 +135,7 @@ export default function Home() {
               className="space-y-6"
             >
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-                Your Trusted Partner in Global Logistics Solutions
+                The Lord is my Song
               </h1>
               <p className="text-lg opacity-90 max-w-md">
                 Providing comprehensive clearing, forwarding, and logistics services to businesses worldwide.
