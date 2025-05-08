@@ -47,7 +47,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="https://freight-forward-two.vercel.app/" // External URL for freight services
+                  href="http://freight.arthurgreatservices.com.ng/" // External URL for freight services
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-green-300 transition-colors"
