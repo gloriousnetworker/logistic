@@ -16,93 +16,258 @@ import {
   Users,
   Globe,
   Clock,
+  ChevronLeft,
+  ChevronRight,
+  X
 } from "lucide-react"
 import TestimonialCarousel from "@/components/testimonial-carousel"
 import NewsSection from "@/components/news-section"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
-// Login Modal Component
-function LoginModal({ onClose, onLogin }: { onClose: () => void, onLogin: () => void }) {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+// Image Carousel Component
+function ImageCarousel({ images }: { images: string[] }) {
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [direction, setDirection] = useState<"left" | "right">("right")
+  const [isFullscreen, setIsFullscreen] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // In a real app, you would validate credentials here
-    onLogin()
+  const nextSlide = () => {
+    setDirection("right")
+    setCurrentIndex((prevIndex) => 
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    )
+  }
+
+  const prevSlide = () => {
+    setDirection("left")
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    )
+  }
+
+  const goToSlide = (index: number) => {
+    setDirection(index > currentIndex ? "right" : "left")
+    setCurrentIndex(index)
+  }
+
+  const toggleFullscreen = () => {
+    setIsFullscreen(!isFullscreen)
   }
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-    >
-      <motion.div 
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="bg-white p-8 rounded-lg shadow-xl max-w-md w-full mx-4"
+    <div className="relative w-full h-full">
+      <div className="relative overflow-hidden rounded-lg shadow-xl h-96 md:h-[500px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            initial={{ x: direction === "right" ? "100%" : "-100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            exit={{ x: direction === "right" ? "-100%" : "100%", opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 w-full h-full"
+          >
+            <img
+              src={images[currentIndex]}
+              alt={`Logistics service ${currentIndex + 1}`}
+              className="w-full h-full object-cover cursor-pointer"
+              onClick={toggleFullscreen}
+            />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      <button
+        onClick={prevSlide}
+        className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md hover:bg-white"
       >
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="text-2xl font-bold text-green-800">Login</h3>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-            ×
-          </button>
+        <ChevronLeft className="h-6 w-6 text-green-800" />
+      </button>
+      <button
+        onClick={nextSlide}
+        className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow-md hover:bg-white"
+      >
+        <ChevronRight className="h-6 w-6 text-green-800" />
+      </button>
+
+      <div className="flex justify-center mt-4 space-x-2">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goToSlide(index)}
+            className={`h-2 w-2 rounded-full ${currentIndex === index ? 'bg-green-700' : 'bg-gray-300'}`}
+          />
+        ))}
+      </div>
+
+      {/* Fullscreen Modal */}
+      <AnimatePresence>
+        {isFullscreen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={toggleFullscreen}
+          >
+            <button 
+              className="absolute top-4 right-4 text-white hover:text-gray-300"
+              onClick={(e) => {
+                e.stopPropagation()
+                toggleFullscreen()
+              }}
+            >
+              <X className="h-8 w-8" />
+            </button>
+            
+            <div className="relative w-full max-w-6xl h-full max-h-[90vh]">
+              <AnimatePresence mode="wait">
+                <motion.img
+                  key={currentIndex}
+                  custom={direction}
+                  initial={{ x: direction === "right" ? "100%" : "-100%", opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: direction === "right" ? "-100%" : "100%", opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  src={images[currentIndex]}
+                  alt={`Logistics service ${currentIndex + 1}`}
+                  className="w-full h-full object-contain"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </AnimatePresence>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  prevSlide()
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 p-3 rounded-full shadow-md hover:bg-white/30 text-white"
+              >
+                <ChevronLeft className="h-8 w-8" />
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation()
+                  nextSlide()
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 p-3 rounded-full shadow-md hover:bg-white/30 text-white"
+              >
+                <ChevronRight className="h-8 w-8" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  )
+}
+
+// Photo Gallery Component
+function PhotoGallery({ images }: { images: string[] }) {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
+
+  return (
+    <section className="py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center space-y-4 mb-12"
+        >
+          <h2 className="text-3xl font-bold text-green-800">Our Operations Gallery</h2>
+          <p className="text-gray-600 max-w-2xl mx-auto">
+            A visual journey through our logistics operations and facilities
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {images.map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.05 }}
+              className="overflow-hidden rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+              onClick={() => setSelectedImage(img)}
+            >
+              <img
+                src={img}
+                alt={`Logistics operation ${index + 1}`}
+                className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+              />
+            </motion.div>
+          ))}
         </div>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
-              Username
-            </label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
+      </div>
+
+      {/* Image Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+            onClick={() => setSelectedImage(null)}
+          >
+            <button 
+              className="absolute top-4 right-4 text-white hover:text-gray-300"
+              onClick={(e) => {
+                e.stopPropagation()
+                setSelectedImage(null)
+              }}
+            >
+              <X className="h-8 w-8" />
+            </button>
+            <motion.img
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              src={selectedImage}
+              alt="Enlarged logistics operation"
+              className="max-w-full max-h-[90vh] object-contain"
+              onClick={(e) => e.stopPropagation()}
             />
-          </div>
-          <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
-              Password
-            </label>
-            <input
-              id="password"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-              required
-            />
-          </div>
-          <Button type="submit" className="w-full bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800">
-            Login
-          </Button>
-        </form>
-      </motion.div>
-    </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
   )
 }
 
 export default function Home() {
-  const router = useRouter()
-  const [showLogin, setShowLogin] = useState(false)
-  const [redirectPath, setRedirectPath] = useState("")
+  // Generate shuffled image paths
+  const heroImages = [
+    "/images/IMG3.jpg",
+    "/images/IMG7.jpg",
+    "/images/IMG12.jpg",
+    "/images/IMG15.jpg"
+  ]
+  
+  const serviceImages = [
+    "/images/IMG1.jpg",
+    "/images/IMG5.jpg",
+    "/images/IMG9.jpg",
+    "/images/IMG13.jpg",
+    "/images/IMG17.jpg",
+    "/images/IMG20.jpg"
+  ]
 
-  const handleQuoteClick = (e: React.MouseEvent, path: string) => {
-    e.preventDefault()
-    setRedirectPath(path)
-    setShowLogin(true)
-  }
-
-  const handleLogin = () => {
-    setShowLogin(false)
-    router.push(redirectPath || "/quote")
-  }
+  const aboutImage = "/images/IMG8.jpg"
+  
+  const galleryImages = [
+    "/images/IMG2.jpg",
+    "/images/IMG4.jpg",
+    "/images/IMG6.jpg",
+    "/images/IMG10.jpg",
+    "/images/IMG11.jpg",
+    "/images/IMG14.jpg",
+    "/images/IMG16.jpg",
+    "/images/IMG18.jpg",
+    "/images/IMG19.jpg",
+    "/images/IMG21.jpg"
+  ]
 
   // Animation variants
   const container = {
@@ -122,12 +287,15 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {showLogin && <LoginModal onClose={() => setShowLogin(false)} onLogin={handleLogin} />}
-      
       <main className="flex-1">
         {/* Hero Section */}
         <section className="relative py-20 md:py-32 bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-2 items-center">
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute inset-0 bg-black/30 z-10" />
+            <ImageCarousel images={heroImages} />
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-2 items-center relative z-20">
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -141,7 +309,7 @@ export default function Home() {
                 Providing comprehensive clearing, forwarding, and logistics services to businesses worldwide.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="/quote" onClick={(e) => handleQuoteClick(e, "/quote")}>
+                <Link href="/quote">
                   <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100">
                     Request a Quote
                   </Button>
@@ -153,18 +321,6 @@ export default function Home() {
                 </Link>
               </div>
             </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="hidden md:block"
-            >
-              <img
-                src="/cargo.png"
-                alt="Cargo shipment"
-                className="rounded-lg shadow-lg h-[400px] w-[500px] object-cover"
-              />
-            </motion.div>
           </div>
 
           {/* Quick Tracking Form in Hero */}
@@ -172,7 +328,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12"
+            className="container mx-auto px-4 sm:px-6 lg:px-8 mt-12 relative z-20"
           >
             <div className="bg-white p-6 rounded-lg shadow-lg max-w-3xl mx-auto">
               <h3 className="text-green-700 font-bold text-lg mb-4">Track Your Shipment</h3>
@@ -182,7 +338,7 @@ export default function Home() {
                   placeholder="Enter tracking number"
                   className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800"
                 />
-                <Link href="/register">
+                <Link href="/tracking">
                   <Button className="whitespace-nowrap bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800">
                     Track Now
                   </Button>
@@ -220,50 +376,67 @@ export default function Home() {
                   icon: <Ship className="h-12 w-12 text-green-700 mb-4" />,
                   title: "Freight Forwarding",
                   description: "International shipping solutions by sea, air, and land with real-time tracking and customs clearance.",
-                  href: "/services/freight-forwarding"
+                  href: "/services/freight-forwarding",
+                  image: serviceImages[0]
                 },
                 {
                   icon: <Truck className="h-12 w-12 text-green-700 mb-4" />,
                   title: "Haulage Services",
                   description: "Reliable transportation of goods with our modern fleet of vehicles for local and long-distance deliveries.",
-                  href: "/services/haulage"
+                  href: "/services/haulage",
+                  image: serviceImages[1]
                 },
                 {
                   icon: <Package className="h-12 w-12 text-green-700 mb-4" />,
                   title: "Clearing & Forwarding",
                   description: "Expert handling of customs documentation and procedures to ensure smooth clearance of your goods.",
-                  href: "/services/clearing-forwarding"
+                  href: "/services/clearing-forwarding",
+                  image: serviceImages[2]
                 },
                 {
                   icon: <FileText className="h-12 w-12 text-green-700 mb-4" />,
                   title: "Logistics Consultancy",
                   description: "Strategic advice on optimizing your supply chain, reducing costs, and improving efficiency.",
-                  href: "/services/consultancy"
+                  href: "/services/consultancy",
+                  image: serviceImages[3]
                 },
                 {
                   icon: <Plane className="h-12 w-12 text-green-700 mb-4" />,
                   title: "Air Freight",
                   description: "Fast and reliable air freight services for time-sensitive shipments to destinations worldwide.",
-                  href: "/services/air-freight"
+                  href: "/services/air-freight",
+                  image: serviceImages[4]
                 },
                 {
                   icon: <MapPin className="h-12 w-12 text-green-700 mb-4" />,
                   title: "Warehousing",
                   description: "Secure storage solutions with inventory management systems and distribution services.",
-                  href: "/services/warehousing"
+                  href: "/services/warehousing",
+                  image: serviceImages[5]
                 }
               ].map((service, index) => (
                 <motion.div 
                   key={index}
                   variants={item}
-                  className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden group"
                 >
-                  {service.icon}
-                  <h3 className="text-xl font-bold mb-2 text-green-800">{service.title}</h3>
-                  <p className="text-gray-600 mb-4">{service.description}</p>
-                  <Link href={service.href} className="text-green-700 font-medium inline-flex items-center group">
-                    Learn more <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      {service.icon}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold mb-2 text-green-800">{service.title}</h3>
+                    <p className="text-gray-600 mb-4">{service.description}</p>
+                    <Link href={service.href} className="text-green-700 font-medium inline-flex items-center group-hover:underline">
+                      Learn more <ArrowRight className="ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
@@ -333,11 +506,13 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <img
-                  src="/cargo.png"
-                  alt="Logistics team"
-                  className="rounded-lg shadow-lg h-[400px] w-full object-cover"
-                />
+                <div className="relative h-96 w-full overflow-hidden rounded-lg shadow-lg">
+                  <img
+                    src={aboutImage}
+                    alt="Logistics team"
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
               </motion.div>
               <motion.div 
                 initial={{ opacity: 0, x: 50 }}
@@ -386,6 +561,9 @@ export default function Home() {
         {/* Testimonials Section */}
         <TestimonialCarousel />
 
+        {/* Photo Gallery Section */}
+        <PhotoGallery images={galleryImages} />
+
         {/* News Section */}
         <NewsSection />
 
@@ -402,7 +580,7 @@ export default function Home() {
               Contact our team today to discuss how we can help streamline your supply chain and reduce costs.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-              <Link href="/quote" onClick={(e) => handleQuoteClick(e, "/quote")}>
+              <Link href="/quote">
                 <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100">
                   Request a Quote
                 </Button>
