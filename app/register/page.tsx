@@ -38,7 +38,6 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
 
-    // Validate password match
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       toast.error('Passwords do not match');
@@ -47,7 +46,7 @@ export default function RegisterPage() {
 
     try {
       setLoading(true);
-      // Prepare payload according to API requirements
+
       const payload = {
         username: formData.username,
         email: formData.email,
@@ -56,45 +55,36 @@ export default function RegisterPage() {
         last_name: formData.last_name,
       };
 
-      // Make the API call
       const response = await axios.post(
         'https://arthurgreatbackend.vercel.app/api/accounts/register/',
         payload,
         { headers: { 'Content-Type': 'application/json' } }
       );
 
-      // Handle successful response
       if (response.status === 201 || response.status === 200) {
-        // Store user data in localStorage
-        localStorage.setItem('user', JSON.stringify(response.data));
-        
-        // Show success toast
+        localStorage.setItem('authToken', response.data.token || '');
+
         toast.success('Registration successful! Redirecting to login...');
-        
-        // Redirect to login page after a short delay
         setTimeout(() => router.push('/login'), 1500);
       }
     } catch (err: any) {
-      // Handle error response
       console.error('Registration error:', err);
-      
-      // Extract error message from response
-      const message = 
-        err.response?.data?.detail || 
-        err.response?.data?.message || 
-        (typeof err.response?.data === 'string' ? err.response.data : '') ||
+
+      const message =
+        err.response?.data?.detail ||
+        err.response?.data?.message ||
         'Registration failed. Please try again.';
-      
-      // Set error state and show toast notification
+
       setError(message);
       toast.error(message);
-      
-      // Handle specific error cases if needed
-      if (err.response?.data?.username) {
-        toast.error(`Username: ${err.response.data.username[0]}`);
-      }
-      if (err.response?.data?.email) {
-        toast.error(`Email: ${err.response.data.email[0]}`);
+
+      // Display individual field errors (e.g. email, username)
+      if (err.response?.data && typeof err.response.data === 'object') {
+        Object.entries(err.response.data).forEach(([key, value]) => {
+          if (Array.isArray(value)) {
+            toast.error(`${key}: ${value[0]}`);
+          }
+        });
       }
     } finally {
       setLoading(false);
@@ -106,8 +96,7 @@ export default function RegisterPage() {
       <Head>
         <title>Register | Arthur Great Logistics</title>
       </Head>
-      
-      {/* Toast notifications container */}
+
       <Toaster position="top-center" reverseOrder={false} />
 
       <div
@@ -131,98 +120,31 @@ export default function RegisterPage() {
 
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm space-y-4">
-              <div>
-                <label htmlFor="username" className="block text-sm font-medium text-gray-700">
-                  Username
-                </label>
-                <input
-                  id="username"
-                  name="username"
-                  type="text"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  value={formData.username}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="first_name" className="block text-sm font-medium text-gray-700">
-                  First Name
-                </label>
-                <input
-                  id="first_name"
-                  name="first_name"
-                  type="text"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  value={formData.first_name}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="last_name" className="block text-sm font-medium text-gray-700">
-                  Last Name
-                </label>
-                <input
-                  id="last_name"
-                  name="last_name"
-                  type="text"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  value={formData.last_name}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-                  Email address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div>
-                <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700">
-                  Confirm Password
-                </label>
-                <input
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="password"
-                  autoComplete="new-password"
-                  required
-                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  value={formData.confirmPassword}
-                  onChange={handleChange}
-                />
-              </div>
+              {[
+                { id: 'username', label: 'Username' },
+                { id: 'first_name', label: 'First Name' },
+                { id: 'last_name', label: 'Last Name' },
+                { id: 'email', label: 'Email address', type: 'email' },
+                { id: 'password', label: 'Password', type: 'password' },
+                { id: 'confirmPassword', label: 'Confirm Password', type: 'password' },
+              ].map(({ id, label, type = 'text' }) => (
+                <div key={id}>
+                  <label htmlFor={id} className="block text-sm font-medium text-gray-700">
+                    {label}
+                  </label>
+                  <input
+                    id={id}
+                    name={id}
+                    type={type}
+                    required
+                    disabled={loading}
+                    autoComplete={id}
+                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                    value={(formData as any)[id]}
+                    onChange={handleChange}
+                  />
+                </div>
+              ))}
             </div>
 
             <button
