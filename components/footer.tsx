@@ -47,7 +47,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="http://freight.arthurgreatservices.com.ng/" // External URL for freight services
+                  href="https://app.arthurgreatservices.com.ng/" // External URL for freight services
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-green-300 transition-colors"
