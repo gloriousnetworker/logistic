@@ -40,7 +40,6 @@ export default function Navigation() {
             ["Home", "/"],
             ["About Us", "/about"],
             ["Services", "/services"],
-            ["Tracking", "/tracking"],
             ["Blog", "/blog"],
             ["Contact", "/contact"],
           ].map(([label, href]) => (
